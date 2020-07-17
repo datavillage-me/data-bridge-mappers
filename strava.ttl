@@ -45,10 +45,17 @@
   ];
 
    rr:subjectMap [
-     rr:template "https://www.strava.com/api/v3/athlete/activities{start_date}";
+     rr:template "https://www.strava.com/api/v3/athlete/activities{id}";
      rr:class schema:Action;
    ];
-  
+
+  rr:predicateObjectMap [
+    rr:predicate dt:TravelAction.id;
+    rr:objectMap [
+      rml:reference "$.id"
+    ]
+  ];
+
   rr:predicateObjectMap [
     rr:predicate dt:TravelAction.dataProvider.url;
     rr:objectMap [
