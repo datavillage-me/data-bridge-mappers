@@ -120,12 +120,12 @@
   ];
 
   rr:subjectMap [
-    rr:template "https://www.strava.com/api/v3/athlete/activities/{type}";
+    rr:template "{type}";
     rr:class dt:Vehicle
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:Vehicle.name;
+    rr:predicate dt:Vehicle.type;
     rr:objectMap [
       rml:reference "$.type"
     ]
