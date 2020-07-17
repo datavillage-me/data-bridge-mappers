@@ -21,7 +21,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:Person.name;
+    rr:predicate schema:Person.id;
     rr:objectMap [
       rml:reference "$.userId"
     ]
@@ -50,9 +50,16 @@
    ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:TravelAction.dataProvider.url;
+    rr:predicate dt:TravelAction.dataProvider;
     rr:objectMap [
-      rml:reference "https://www.strava.com"
+      rml:constant "https://www.strava.com"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate dt:TravelAction.type;
+    rr:objectMap [
+      rml:constant "TravelAction"
     ]
   ];
 
