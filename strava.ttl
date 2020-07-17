@@ -45,14 +45,21 @@
   ];
 
    rr:subjectMap [
-     rr:template "https://www.datavillage.me/ontologies/digital-twin/TravelAction/{@id}";
+     rr:template "https://www.strava.com/api/v3/activities/{start_time}";
      rr:class dt:TravelAction;
    ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:TravelAction.dataProvider.url;
+    rr:predicate dt:TravelAction.type;
     rr:objectMap [
-      rml:reference "https://www.strava.com"
+      rr:constant "TravelAction"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate dt:TravelAction.dataProvider;
+    rr:objectMap [
+      rr:constant "https://www.strava.com"
     ]
   ];
 
