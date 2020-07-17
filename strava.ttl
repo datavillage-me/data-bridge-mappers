@@ -52,14 +52,14 @@
   rr:predicateObjectMap [
     rr:predicate dt:TravelAction.dataProvider;
     rr:objectMap [
-      rml:constant "https://www.strava.com"
+      rr:constant "https://www.strava.com"
     ]
   ];
 
   rr:predicateObjectMap [
     rr:predicate dt:TravelAction.type;
     rr:objectMap [
-      rml:constant "TravelAction"
+      rr:constant "TravelAction"
     ]
   ];
 
