@@ -45,7 +45,7 @@
   ];
 
    rr:subjectMap [
-     rr:template "https://www.strava.com/api/v3/athlete/activities{id}";
+     rr:template "https://www.strava.com/api/v3/athlete/activities{start_time}";
      rr:class schema:Action;
    ];
 
