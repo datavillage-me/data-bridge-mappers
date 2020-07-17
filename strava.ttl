@@ -17,17 +17,17 @@
 
   rr:subjectMap [
     rr:template "https://api.datavillage.me/users/{userId}";
-    rr:class schema:Person
+    rr:class dt:Person
   ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:Person.id;
+    rr:predicate dt:Person.id;
     rr:objectMap [
       rml:reference "$.userId"
     ]
   ];
    rr:predicateObjectMap [
-      rr:predicate schema:Action;
+      rr:predicate dt:Action;
       rr:objectMap [
         rr:parentTriplesMap <#ActionTriplesMap>;
             rr:joinCondition [
@@ -46,56 +46,56 @@
 
    rr:subjectMap [
      rr:template "https://www.datavillage.me/ontologies/digital-twin/TravelAction/{start_date}";
-     rr:class schema:Action;
+     rr:class dt:Action;
    ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:Action.dataProvider;
+    rr:predicate dt:Action.dataProvider;
     rr:objectMap [
       rr:constant "https://www.strava.com"
     ]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:Action.type;
+    rr:predicate dt:Action.type;
     rr:objectMap [
       rr:constant "TravelAction"
     ]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:Action.elapseTime;
+    rr:predicate dt:Action.elapseTime;
     rr:objectMap [
       rml:reference "$.elapsed_time"
     ]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:Action.movingTime;
+    rr:predicate dt:Action.movingTime;
     rr:objectMap [
       rml:reference "$.moving_time"
     ]
   ];
   rr:predicateObjectMap [
-    rr:predicate schema:Action.elevationGain;
+    rr:predicate dt:Action.elevationGain;
     rr:objectMap [
       rml:reference "$.elevation_gain"
     ]
   ];
     rr:predicateObjectMap [
-        rr:predicate schema:Action.distance;
+        rr:predicate dt:Action.distance;
         rr:objectMap [
   	  rml:reference "$.distance"
   	  ];
     ];
      rr:predicateObjectMap [
-    	rr:predicate schema:Action.startTime;
+    	rr:predicate dt:Action.startTime;
         rr:objectMap [
         rml:reference "$.start_date"
         ]
       ];
       rr:predicateObjectMap [
-      	rr:predicate schema:Action.description;
+      	rr:predicate dt:Action.description;
         rr:objectMap [
         rml:reference "$.name"
        ]
