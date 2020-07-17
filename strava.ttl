@@ -17,11 +17,11 @@
 
   rr:subjectMap [
     rr:template "https://api.datavillage.me/users/{userId}";
-    rr:class dt:Person
+    rr:class schema:Person
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:Person.id;
+    rr:predicate schema:Person.name;
     rr:objectMap [
       rml:reference "$.userId"
     ]
@@ -29,7 +29,7 @@
    rr:predicateObjectMap [
       rr:predicate schema:Action;
       rr:objectMap [
-        rr:parentTriplesMap <#ActionTriplesMap>;
+        rr:parentTriplesMap <#TravelActionTriplesMap>;
             rr:joinCondition [
         			rr:child "$.userId";
         			rr:parent "$.userId";
@@ -37,7 +37,7 @@
       ]
     ].
 
-<#ActionTriplesMap>
+<#TravelActionTriplesMap>
   rml:logicalSource [
     rml:source "https://www.strava.com/api/v3/athlete/activities";
     rml:referenceFormulation ql:JSONPath;
@@ -45,8 +45,8 @@
   ];
 
    rr:subjectMap [
-     rr:template "https://www.strava.com/api/v3/athlete/activities/{start_time}";
-     rr:class schema:Action;
+     rr:template "https://www.datavillage.me/ontologies/digital-twin/TravelAction/{start_date}";
+     rr:class dt:TravelAction;
    ];
 
   rr:predicateObjectMap [
