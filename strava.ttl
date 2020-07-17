@@ -50,20 +50,6 @@
    ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:TravelAction.type;
-    rr:objectMap [
-      rr:constant "TravelAction"
-    ]
-  ];
-
-  rr:predicateObjectMap [
-    rr:predicate dt:TravelAction.dataProvider;
-    rr:objectMap [
-      rr:constant "https://www.strava.com"
-    ]
-  ];
-
-  rr:predicateObjectMap [
     rr:predicate dt:TravelAction.elapseTime;
     rr:objectMap [
       rml:reference "$.elapsed_time"
