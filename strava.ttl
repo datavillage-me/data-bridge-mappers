@@ -45,7 +45,7 @@
   ];
 
    rr:subjectMap [
-     rr:template "https://www.datavillage.me/ontologies/digital-twin/TravelAction/{.id}";
+     rr:template "https://www.datavillage.me/ontologies/digital-twin/TravelAction/{/id}";
      rr:class dt:TravelAction;
    ];
 
