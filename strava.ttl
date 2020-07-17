@@ -29,7 +29,7 @@
    rr:predicateObjectMap [
       rr:predicate schema:Action;
       rr:objectMap [
-        rr:parentTriplesMap <#TravelActionTriplesMap>;
+        rr:parentTriplesMap <#ActionTriplesMap>;
             rr:joinCondition [
         			rr:child "$.userId";
         			rr:parent "$.userId";
@@ -37,7 +37,7 @@
       ]
     ].
 
-<#TravelActionTriplesMap>
+<#ActionTriplesMap>
   rml:logicalSource [
     rml:source "https://www.strava.com/api/v3/athlete/activities";
     rml:referenceFormulation ql:JSONPath;
@@ -46,63 +46,63 @@
 
    rr:subjectMap [
      rr:template "https://www.datavillage.me/ontologies/digital-twin/TravelAction/{start_date}";
-     rr:class dt:TravelAction;
+     rr:class schema:Action;
    ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:TravelAction.dataProvider;
+    rr:predicate schema:Action.dataProvider;
     rr:objectMap [
       rr:constant "https://www.strava.com"
     ]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:TravelAction.type;
+    rr:predicate schema:Action.type;
     rr:objectMap [
       rr:constant "TravelAction"
     ]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:TravelAction.elapseTime;
+    rr:predicate schema:Action.elapseTime;
     rr:objectMap [
       rml:reference "$.elapsed_time"
     ]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:TravelAction.movingTime;
+    rr:predicate schema:Action.movingTime;
     rr:objectMap [
       rml:reference "$.moving_time"
     ]
   ];
   rr:predicateObjectMap [
-    rr:predicate dt:TravelAction.elevationGain;
+    rr:predicate schema:Action.elevationGain;
     rr:objectMap [
       rml:reference "$.elevation_gain"
     ]
   ];
     rr:predicateObjectMap [
-        rr:predicate dt:TravelAction.distance;
+        rr:predicate schema:Action.distance;
         rr:objectMap [
   	  rml:reference "$.distance"
   	  ];
     ];
      rr:predicateObjectMap [
-    	rr:predicate schema:TravelAction.startTime;
+    	rr:predicate schema:Action.startTime;
         rr:objectMap [
         rml:reference "$.start_date"
         ]
       ];
       rr:predicateObjectMap [
-      	rr:predicate schema:TravelAction.description;
+      	rr:predicate schema:Action.description;
         rr:objectMap [
         rml:reference "$.name"
        ]
       ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:TravelAction.instrument;
+    rr:predicate dt:Instrument;
     rr:objectMap [
       rr:parentTriplesMap <#InstrumentTriplesMap>;
           rr:joinCondition [
