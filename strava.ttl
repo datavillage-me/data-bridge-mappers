@@ -64,13 +64,6 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:TravelAction.sourceId;
-    rr:objectMap [
-      rml:reference "$.id"
-    ]
-  ];
-
-  rr:predicateObjectMap [
     rr:predicate dt:TravelAction.elapseTime;
     rr:objectMap [
       rml:reference "$.elapsed_time"
