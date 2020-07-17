@@ -120,7 +120,7 @@
   ];
 
   rr:subjectMap [
-    rr:template "{type}";
+    rr:template "https://www.strava.com/api/v3/athlete/activities/{type}";
     rr:class dt:Vehicle
   ];
 
