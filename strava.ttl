@@ -45,7 +45,7 @@
   ];
 
    rr:subjectMap [
-     rr:template "https://www.strava.com/api/v3/activities/{start_date}";
+     rr:template "https://www.strava.com/api/v3/activities/{upload_id}";
      rr:class dt:Action;
    ];
 
