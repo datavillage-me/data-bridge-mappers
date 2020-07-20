@@ -45,7 +45,7 @@
   ];
 
    rr:subjectMap [
-     rr:template "https://www.strava.com/api/v3/activities/{upload_id}";
+     rr:template "https://www.strava.com/api/v3/activities/{start_date}";
      rr:class dt:Action;
    ];
 
@@ -120,7 +120,7 @@
   ];
 
   rr:subjectMap [
-    rr:template "https://www.datavillage.me/ontologies/digital-twin#{type}";
+    rr:template "https://www.strava.com/api/v3/athlete/activities/{type}";
     rr:class dt:Vehicle
   ];
 
