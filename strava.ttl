@@ -41,11 +41,11 @@
   rml:logicalSource [
     rml:source "https://www.strava.com/api/v3/athlete/activities";
     rml:referenceFormulation ql:JSONPath;
-    rml:iterator "/"
+    rml:iterator "$.[*]"
   ];
 
    rr:subjectMap [
-     rr:template "https://www.strava.com/api/v3/activities/{id}";
+     rr:template "https://www.strava.com/api/v3/activities/{upload_id}";
      rr:class dt:Action;
    ];
 
@@ -120,7 +120,7 @@
   ];
 
   rr:subjectMap [
-    rr:template "https://www.strava.com/api/v3/athlete/activities/{type}";
+    rr:template "https://www.datavillage.me/ontologies/digital-twin#{type}";
     rr:class dt:Vehicle
   ];
 
