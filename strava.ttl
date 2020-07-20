@@ -41,11 +41,11 @@
   rml:logicalSource [
     rml:source "https://www.strava.com/api/v3/athlete/activities";
     rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.activities[*]"
+    rml:iterator "$.[*]"
   ];
 
    rr:subjectMap [
-     rr:template "https://www.strava.com/api/v3/activities/{upload_id}";
+     rr:template "https://www.strava.com/api/v3/activities/{external_id}";
      rr:class dt:Action;
    ];
 
