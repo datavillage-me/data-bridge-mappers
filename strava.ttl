@@ -45,7 +45,7 @@
   ];
 
    rr:subjectMap [
-     rr:template "https://www.datavillage.me/ontologies/digital-twin/TravelAction/{start_date}";
+     rr:template "https://www.strava.com/api/v3/activities{start_date}";
      rr:class dt:Action;
    ];
 
