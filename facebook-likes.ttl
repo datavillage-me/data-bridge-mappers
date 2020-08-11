@@ -1,0 +1,102 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix schema: <http://schema.org/>.
+@prefix wgs84_pos: <http://www.w3.org/2003/01/geo/wgs84_pos#lat>.
+@prefix gn: <http://www.geonames.org/ontology#>.
+@prefix dt: <https://www.datavillage.me/ontologies/digital-twin#>.
+@base <http://sti2.at/> . #the base for the classes
+
+<#PersonTriplesMap>
+  rml:logicalSource [
+    rml:source "https://graph.facebook.com/v3.3/me/likes";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "https://api.datavillage.me/users/{userId}";
+    rr:class dt:Person
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate dt:Person.id;
+    rr:objectMap [
+      rml:reference "$.userId"
+    ]
+  ];
+   rr:predicateObjectMap [
+      rr:predicate dt:Action;
+      rr:objectMap [
+        rr:parentTriplesMap <#ActionTriplesMap>;
+            rr:joinCondition [
+        			rr:child "$.userId";
+        			rr:parent "$.userId";
+        	    ]
+      ]
+    ].
+
+<#ActionTriplesMap>
+  rml:logicalSource [
+    rml:source "https://graph.facebook.com/v3.3/me/likes";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.data[*]"
+  ];
+
+   rr:subjectMap [
+     rr:template "https://graph.facebook.com/v3.3/{id}";
+     rr:class dt:Action;
+   ];
+
+  rr:predicateObjectMap [
+    rr:predicate dt:Action.dataProvider;
+    rr:objectMap [
+      rr:constant "https://www.facebook.com"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate dt:Action.type;
+    rr:objectMap [
+      rr:constant "LikeAction"
+    ]
+  ];
+
+     rr:predicateObjectMap [
+    	rr:predicate dt:Action.startTime;
+        rr:objectMap [
+        rml:reference "$.created_time"
+        ]
+      ];
+     
+
+  rr:predicateObjectMap [
+    rr:predicate dt:Instrument;
+    rr:objectMap [
+      rr:parentTriplesMap <#InstrumentTriplesMap>;
+          rr:joinCondition [
+      			rr:child "$.type";
+      			rr:parent "$.type";
+      	    ]
+    ]
+  ].
+
+  <#InstrumentTriplesMap>
+  rml:logicalSource [
+    rml:source "https://www.strava.com/api/v3/athlete/activities";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "https://www.datavillage.me/ontologies/digital-twin#{type}";
+    rr:class dt:Vehicle
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate dt:Vehicle.type;
+    rr:objectMap [
+      rml:reference "$.type"
+    ]
+  ].
