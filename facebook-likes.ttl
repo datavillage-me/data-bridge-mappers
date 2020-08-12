@@ -68,18 +68,4 @@
     rr:objectMap [
     rml:reference "$.created_time"
     ]
-  ];
-     
-
-  rr:predicateObjectMap [
-    rr:predicate dt:Object;
-    rr:objectMap [
-      rr:parentTriplesMap <#ObjectTriplesMap>;
-          rr:joinCondition [
-      			rr:child "$.id";
-      			rr:parent "$.id";
-      	    ]
-    ]
-  ]
-
- .
+  ].
