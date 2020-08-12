@@ -99,14 +99,14 @@
     rr:objectMap [
       rml:reference "$.about"
     ]
-  ]
+  ];
 
   rr:predicateObjectMap [
     rr:predicate dt:CreativeWork.description;
     rr:objectMap [
       rml:reference "$.description"
     ]
-  ]
+  ];
 
   rr:predicateObjectMap [
     rr:predicate dt:CreativeWork.keywords;
