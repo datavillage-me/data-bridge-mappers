@@ -45,7 +45,7 @@
   ];
 
    rr:subjectMap [
-     rr:template "https://graph.facebook.com/v3.3/{id}";
+     rr:template "https://graph.facebook.com/v3.3/me/likes?target_id={id}";
      rr:class dt:Action;
    ];
 
@@ -63,40 +63,40 @@
     ]
   ];
 
-     rr:predicateObjectMap [
-    	rr:predicate dt:Action.startTime;
-        rr:objectMap [
-        rml:reference "$.created_time"
-        ]
-      ];
+  rr:predicateObjectMap [
+    rr:predicate dt:Action.startTime;
+    rr:objectMap [
+    rml:reference "$.created_time"
+    ]
+  ];
      
 
   rr:predicateObjectMap [
-    rr:predicate dt:Instrument;
+    rr:predicate dt:Object;
     rr:objectMap [
-      rr:parentTriplesMap <#InstrumentTriplesMap>;
+      rr:parentTriplesMap <#ObjectTriplesMap>;
           rr:joinCondition [
-      			rr:child "$.type";
-      			rr:parent "$.type";
+      			rr:child "$.id";
+      			rr:parent "$.id";
       	    ]
     ]
   ].
 
-  <#InstrumentTriplesMap>
+  <#ObjectTriplesMap>
   rml:logicalSource [
-    rml:source "https://www.strava.com/api/v3/athlete/activities";
+    rml:source "https://graph.facebook.com/v3.3/me/likes";
     rml:referenceFormulation ql:JSONPath;
     rml:iterator "$.[*]"
   ];
 
   rr:subjectMap [
-    rr:template "https://www.datavillage.me/ontologies/digital-twin#{type}";
-    rr:class dt:Vehicle
+    rr:template "https://graph.facebook.com/v3.3/{id}";
+    rr:class dt:CreativeWork
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:Vehicle.type;
+    rr:predicate dt:CreativeWork.about;
     rr:objectMap [
-      rml:reference "$.type"
+      rml:reference "$.about"
     ]
   ].
