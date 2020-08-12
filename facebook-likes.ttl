@@ -68,4 +68,49 @@
     rr:objectMap [
     rml:reference "$.created_time"
     ]
+  ];
+     
+
+  rr:predicateObjectMap [
+    rr:predicate dt:Object;
+    rr:objectMap [
+      rr:parentTriplesMap <#ObjectTriplesMap>;
+          rr:joinCondition [
+      			rr:child "$.id";
+      			rr:parent "$.id";
+      	    ]
+    ]
+  ]
+
+  <#ObjectTriplesMap>
+  rml:logicalSource [
+    rml:source "https://graph.facebook.com/v3.3/me/likes";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "https://graph.facebook.com/v3.3/{id}";
+    rr:class dt:CreativeWork
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate dt:CreativeWork.about;
+    rr:objectMap [
+      rml:reference "$.about"
+    ]
+  ]
+
+  rr:predicateObjectMap [
+    rr:predicate dt:CreativeWork.description;
+    rr:objectMap [
+      rml:reference "$.description"
+    ]
+  ]
+
+  rr:predicateObjectMap [
+    rr:predicate dt:CreativeWork.keywords;
+    rr:objectMap [
+      rml:reference "$.category"
+    ]
   ].
