@@ -80,7 +80,7 @@
       			rr:parent "$.id";
       	    ]
     ]
-  ]
+  ].
 
   <#ObjectTriplesMap>
   rml:logicalSource [
