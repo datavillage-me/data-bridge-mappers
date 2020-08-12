@@ -80,7 +80,7 @@
       			rr:parent "$.id";
       	    ]
     ]
-  ].
+  ]
 
   <#ObjectTriplesMap>
   rml:logicalSource [
@@ -113,12 +113,4 @@
     rr:objectMap [
       rml:reference "$.category"
     ]
-  ]
-
-  rr:predicateObjectMap [
-    rr:predicate dt:CreativeWork.about;
-    rr:objectMap [
-      rml:reference "$.about"
-    ]
-  ]
-  .
+  ].
