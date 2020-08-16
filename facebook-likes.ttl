@@ -95,6 +95,13 @@
   ];
 
   rr:predicateObjectMap [
+    rr:predicate dt:CreativeWork.dataProvider;
+    rr:objectMap [
+      rr:constant "https://www.facebook.com"
+    ]
+  ];
+
+  rr:predicateObjectMap [
     rr:predicate dt:CreativeWork.about;
     rr:objectMap [
       rml:reference "$.about"
