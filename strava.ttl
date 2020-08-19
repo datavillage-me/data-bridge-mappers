@@ -69,24 +69,6 @@
       ]
     ];
 
-    rr:predicateObjectMap [
-      rr:predicate rdf:type;
-      rr:objectMap [
-        rr:parentTriplesMap <#TypeTriplesMap>;
-            rr:joinCondition [
-              rr:child "TravelAction";
-              rr:parent "TravelAction";
-              ]
-      ]
-    ].
-
-  <#TypeTriplesMap>
-  rr:subjectMap [
-    rr:template "https://schema.org/TravelAction";
-    rr:class schema:TravelAction
-  ].
-
-
 
   rr:predicateObjectMap [
     rr:predicate schema:instrument;
