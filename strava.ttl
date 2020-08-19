@@ -3,7 +3,6 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix schema: <http://schema.org/>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix dt: <https://www.datavillage.me/ontologies/digital-twin#>.
 @base <http://sti2.at/> . #the base for the classes
 
@@ -16,11 +15,11 @@
 
   rr:subjectMap [
     rr:template "https://api.datavillage.me/users/{userId}";
-    rr:class foaf:Person
+    rr:class schema:Person
   ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:Action;
+    rr:predicate schema:agent;
     rr:objectMap [
       rr:parentTriplesMap <#ActionTriplesMap>;
           rr:joinCondition [
@@ -42,60 +41,55 @@
      rr:class schema:Action;
    ];
 
-  rr:predicateObjectMap [
-    rr:predicate dt:Action.dataProvider;
-    rr:objectMap [
-      rr:constant "https://www.strava.com"
-    ]
-  ];
-
-  rr:predicateObjectMap [
-    rr:predicate dt:Action.type;
-    rr:objectMap [
-      rr:constant "TravelAction"
-    ]
-  ];
-
-  rr:predicateObjectMap [
-    rr:predicate dt:Action.elapseTime;
-    rr:objectMap [
-      rml:reference "$.elapsed_time"
-    ]
-  ];
-
-  rr:predicateObjectMap [
-    rr:predicate dt:Action.movingTime;
-    rr:objectMap [
-      rml:reference "$.moving_time"
-    ]
-  ];
-  rr:predicateObjectMap [
-    rr:predicate dt:Action.elevationGain;
-    rr:objectMap [
-      rml:reference "$.elevation_gain"
-    ]
-  ];
-    rr:predicateObjectMap [
-        rr:predicate dt:Action.distance;
+   rr:predicateObjectMap [
+        rr:predicate schema:Action.distance;
         rr:objectMap [
   	  rml:reference "$.distance"
   	  ];
     ];
-     rr:predicateObjectMap [
-    	rr:predicate dt:Action.startTime;
-        rr:objectMap [
-        rml:reference "$.start_date"
-        ]
-      ];
-      rr:predicateObjectMap [
-      	rr:predicate dt:Action.description;
-        rr:objectMap [
-        rml:reference "$.name"
-       ]
-      ];
+
+    rr:predicateObjectMap [
+    rr:predicate schema:Action.startTime;
+      rr:objectMap [
+      rml:reference "$.start_date"
+      ]
+    ];
+
+    rr:predicateObjectMap [
+      rr:predicate schema:Action.description;
+      rr:objectMap [
+      rml:reference "$.name"
+      ]
+    ];
+
+    rr:predicateObjectMap [
+      rr:predicate schema:Action.dataProvider;
+      rr:objectMap [
+        rr:constant "https://www.strava.com"
+      ]
+    ];
+
+    rr:predicateObjectMap [
+      rr:predicate rdf:type;
+      rr:objectMap [
+        rr:parentTriplesMap <#TypeTriplesMap>;
+            rr:joinCondition [
+              rr:child "TravelAction";
+              rr:parent "TravelAction";
+              ]
+      ]
+    ].
+
+  <#TypeTriplesMap>
+  rr:subjectMap [
+    rr:template "https://schema.org/TravelAction";
+    rr:class schema:TravelAction
+  ].
+
+
 
   rr:predicateObjectMap [
-    rr:predicate dt:Instrument;
+    rr:predicate schema:instrument;
     rr:objectMap [
       rr:parentTriplesMap <#InstrumentTriplesMap>;
           rr:joinCondition [
