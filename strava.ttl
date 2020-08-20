@@ -53,7 +53,6 @@
         rr:predicate schema:TravelAction.distance;
         rr:objectMap [
   	  rml:reference "$.distance"
-      rr:datatype xsd:float
   	  ];
     ];
 
@@ -61,7 +60,6 @@
     rr:predicate schema:Action.startTime;
       rr:objectMap [
       rml:reference "$.start_date"
-      rr:datatype xsd:dateTime
       ]
     ];
 
@@ -69,7 +67,6 @@
     rr:predicate schema:Action.endTime;
       rr:objectMap [
       rml:reference "$.end_date"
-      rr:datatype xsd:dateTime
       ]
     ];
 
