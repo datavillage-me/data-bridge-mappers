@@ -83,7 +83,7 @@
   rr:predicateObjectMap [
     rr:predicate schema:subjectOf;
     rr:objectMap [
-      rr:parentTriplesMap <#ActivityTriplesMap>;
+      rr:parentTriplesMap <#PhysicalActivityTriplesMap>;
           rr:joinCondition [
       			rr:child "$.type";
       			rr:parent "$.type";
@@ -91,7 +91,7 @@
     ]
   ].
 
-  <#ActivityTriplesMap>
+  <#PhysicalActivityTriplesMap>
   rml:logicalSource [
     rml:source "https://www.strava.com/api/v3/athlete/activities";
     rml:referenceFormulation ql:JSONPath;
@@ -100,12 +100,12 @@
 
   rr:subjectMap [
     rr:template "http://www.semanticweb.org/hyk038/ontologies/2018/7/untitled-ontology-17#{type}";
-    rr:class paco:Activity
+    rr:class schema:PhysicalActivity
   ];
 
   rr:predicateObjectMap [
-    rr:predicate rdf:type;
+    rr:predicate schema:category;
     rr:objectMap [
-      rml:reference "paco:$.type"
+      rml:reference "$.type"
     ]
   ].
