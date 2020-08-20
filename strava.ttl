@@ -101,7 +101,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:category;
+    rr:predicate schema:PhysicalActivity.category;
     rr:objectMap [
       rml:reference "$.type"
     ]
