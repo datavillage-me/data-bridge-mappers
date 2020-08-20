@@ -39,8 +39,15 @@
 
    rr:subjectMap [
      rr:template "https://www.strava.com/api/v3/activities/{upload_id_str}";
-     rr:class schema:TravelAction;
+     rr:class schema:Action;
    ];
+
+   rr:predicateObjectMap [
+    rr:predicate rdf:type;
+      rr:objectMap [
+      rr:constant "schema:TravelAction"
+      ]
+    ];
 
    rr:predicateObjectMap [
         rr:predicate schema:TravelAction.distance;
@@ -91,4 +98,11 @@
   rr:subjectMap [
     rr:template "http://www.semanticweb.org/hyk038/ontologies/2018/7/untitled-ontology-17#{type}";
     rr:class paco:Activity
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdf:type;
+    rr:objectMap [
+      rml:reference "paco:$.type"
+    ]
   ].
