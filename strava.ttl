@@ -90,5 +90,5 @@
 
   rr:subjectMap [
     rr:template "http://www.semanticweb.org/hyk038/ontologies/2018/7/untitled-ontology-17#{type}";
-    rr:class paco:{type}
+    rr:class paco:Activity
   ].
