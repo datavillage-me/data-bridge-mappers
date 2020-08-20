@@ -42,7 +42,7 @@
    ];
 
    rr:predicateObjectMap [
-        rr:predicate schema:Action.distance;
+        rr:predicate schema:MoveAction.distance;
         rr:objectMap [
   	  rml:reference "$.distance"
   	  ];
@@ -56,19 +56,18 @@
     ];
 
     rr:predicateObjectMap [
-      rr:predicate schema:Action.description;
+    rr:predicate schema:Action.endTime;
       rr:objectMap [
-      rml:reference "$.name"
+      rml:reference "$.end_date"
       ]
     ];
 
     rr:predicateObjectMap [
-      rr:predicate schema:Action.dataProvider;
+      rr:predicate schema:Thing.description;
       rr:objectMap [
-        rr:constant "https://www.strava.com"
+      rml:reference "$.name"
       ]
     ];
-
 
   rr:predicateObjectMap [
     rr:predicate schema:instrument;
