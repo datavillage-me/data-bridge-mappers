@@ -53,6 +53,7 @@
         rr:predicate schema:TravelAction.distance;
         rr:objectMap [
   	  rml:reference "$.distance"
+      rr:datatype xsd:float
   	  ];
     ];
 
