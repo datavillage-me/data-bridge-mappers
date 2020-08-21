@@ -50,28 +50,28 @@
     ];
 
    rr:predicateObjectMap [
-        rr:predicate schema:TravelAction.distance;
+        rr:predicate schema:distance;
         rr:objectMap [
   	  rml:reference "$.distance"
   	  ];
     ];
 
     rr:predicateObjectMap [
-    rr:predicate schema:Action.startTime;
+    rr:predicate schema:startTime;
       rr:objectMap [
       rml:reference "$.start_date"
       ]
     ];
 
     rr:predicateObjectMap [
-    rr:predicate schema:Action.endTime;
+    rr:predicate schema:endTime;
       rr:objectMap [
       rml:reference "$.end_date"
       ]
     ];
 
     rr:predicateObjectMap [
-      rr:predicate schema:Thing.description;
+      rr:predicate schema:description;
       rr:objectMap [
       rml:reference "$.name"
       ]
@@ -101,7 +101,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:PhysicalActivity.category;
+    rr:predicate schema:category;
     rr:objectMap [
       rml:reference "$.type"
     ]
