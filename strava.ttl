@@ -110,6 +110,6 @@
   rr:predicateObjectMap [
     rr:predicate schema:additionalType;
     rr:objectMap [
-      rml:reference "http://www.semanticweb.org/hyk038/ontologies/2018/7/untitled-ontology-17#$.type"
+      rml:reference "http://www.semanticweb.org/hyk038/ontologies/2018/7/untitled-ontology-17#Activity"
     ]
   ].
