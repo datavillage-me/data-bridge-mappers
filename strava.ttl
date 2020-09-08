@@ -82,8 +82,8 @@
     rr:objectMap [
       rr:parentTriplesMap <#PhysicalActivityTriplesMap>;
           rr:joinCondition [
-      			rr:child "$.type";
-      			rr:parent "$.type";
+      			rr:child "$.upload_id_str";
+      			rr:parent "$.upload_id_str";
       	    ]
     ]
   ].
@@ -96,7 +96,7 @@
   ];
 
   rr:subjectMap [
-    rr:template "http://www.semanticweb.org/hyk038/ontologies/2018/7/untitled-ontology-17#{type}";
+    rr:template "http://www.semanticweb.org/hyk038/ontologies/2018/7/untitled-ontology-17#{type}?id={upload_id_str}";
     rr:class schema:PhysicalActivity
   ];
 
