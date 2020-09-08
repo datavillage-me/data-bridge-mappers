@@ -96,7 +96,7 @@
   ];
 
   rr:subjectMap [
-    rr:template "https://www.strava.com/api/v3/activities/{upload_id_str}";
+    rr:template "http://www.semanticweb.org/hyk038/ontologies/2018/7/untitled-ontology-17#{type}?id={upload_id_str}";
     rr:class schema:PhysicalActivity
   ];
 
