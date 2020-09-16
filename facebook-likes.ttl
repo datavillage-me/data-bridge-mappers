@@ -1,11 +1,10 @@
 @prefix rr: <http://www.w3.org/ns/r2rml#>.
 @prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix rdf: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix schema: <http://schema.org/>.
-@prefix wgs84_pos: <http://www.w3.org/2003/01/geo/wgs84_pos#lat>.
-@prefix gn: <http://www.geonames.org/ontology#>.
-@prefix dt: <https://www.datavillage.me/ontologies/digital-twin#>.
+@prefix paco: <http://www.semanticweb.org/hyk038/ontologies/2018/7/untitled-ontology-17#>.
 @base <http://sti2.at/> . #the base for the classes
 
 <#PersonTriplesMap>
@@ -17,25 +16,19 @@
 
   rr:subjectMap [
     rr:template "https://api.datavillage.me/users/{userId}";
-    rr:class dt:Person
+    rr:class schema:Person
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:Person.id;
+    rr:predicate schema:agent;
     rr:objectMap [
-      rml:reference "$.userId"
+      rr:parentTriplesMap <#ActionTriplesMap>;
+          rr:joinCondition [
+            rr:child "$.userId";
+            rr:parent "$.userId";
+            ]
     ]
-  ];
-   rr:predicateObjectMap [
-      rr:predicate dt:Action;
-      rr:objectMap [
-        rr:parentTriplesMap <#ActionTriplesMap>;
-            rr:joinCondition [
-        			rr:child "$.userId";
-        			rr:parent "$.userId";
-        	    ]
-      ]
-    ].
+  ].
 
 <#ActionTriplesMap>
   rml:logicalSource [
@@ -46,33 +39,25 @@
 
    rr:subjectMap [
      rr:template "https://graph.facebook.com/v3.3/me/likes?target_id={id}";
-     rr:class dt:Action;
+     rr:class schema:Action;
    ];
 
-  rr:predicateObjectMap [
-    rr:predicate dt:Action.dataProvider;
-    rr:objectMap [
-      rr:constant "https://www.facebook.com"
-    ]
-  ];
+   rr:predicateObjectMap [
+    rr:predicate rdf:type;
+      rr:objectMap [
+      rr:constant "schema:LikeAction"
+      ]
+    ];
+
+    rr:predicateObjectMap [
+    rr:predicate schema:startTime;
+      rr:objectMap [
+      rml:reference "$.created_time"
+      ]
+    ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:Action.type;
-    rr:objectMap [
-      rr:constant "LikeAction"
-    ]
-  ];
-
-  rr:predicateObjectMap [
-    rr:predicate dt:Action.startTime;
-    rr:objectMap [
-    rml:reference "$.created_time"
-    ]
-  ];
-     
-
-  rr:predicateObjectMap [
-    rr:predicate dt:Object;
+    rr:predicate schema:object;
     rr:objectMap [
       rr:parentTriplesMap <#ObjectTriplesMap>;
           rr:joinCondition [
@@ -91,32 +76,32 @@
 
   rr:subjectMap [
     rr:template "https://graph.facebook.com/v3.3/{id}";
-    rr:class dt:CreativeWork
+    rr:class schema:CreativeWork
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:CreativeWork.dataProvider;
+    rr:predicate schema:CreativeWork.provider;
     rr:objectMap [
       rr:constant "https://www.facebook.com"
     ]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:CreativeWork.about;
+    rr:predicate schema:CreativeWork.about;
     rr:objectMap [
       rml:reference "$.about"
     ]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:CreativeWork.description;
+    rr:predicate schema:CreativeWork.description;
     rr:objectMap [
       rml:reference "$.description"
     ]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:CreativeWork.keywords;
+    rr:predicate schema:CreativeWork.keywords;
     rr:objectMap [
       rml:reference "$.category"
     ]
