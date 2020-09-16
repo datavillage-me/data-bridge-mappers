@@ -87,7 +87,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:CreativeWork.about;
+    rr:predicate schema:CreativeWork.about;
     rr:objectMap [
       rml:reference "$.about"
     ]
