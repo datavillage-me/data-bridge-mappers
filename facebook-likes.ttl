@@ -80,28 +80,28 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:CreativeWork.provider;
+    rr:predicate schema:provider;
     rr:objectMap [
       rr:constant "https://www.facebook.com"
     ]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:CreativeWork.about;
+    rr:predicate schema:about;
     rr:objectMap [
       rml:reference "$.about"
     ]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:CreativeWork.description;
+    rr:predicate schema:description;
     rr:objectMap [
       rml:reference "$.description"
     ]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:CreativeWork.keywords;
+    rr:predicate schema:keywords;
     rr:objectMap [
       rml:reference "$.category"
     ]
