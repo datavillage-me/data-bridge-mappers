@@ -94,14 +94,14 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:CreativeWork.description;
+    rr:predicate schema:CreativeWork.description;
     rr:objectMap [
       rml:reference "$.description"
     ]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate dt:CreativeWork.keywords;
+    rr:predicate schema:CreativeWork.keywords;
     rr:objectMap [
       rml:reference "$.category"
     ]
