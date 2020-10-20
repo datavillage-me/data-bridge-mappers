@@ -62,7 +62,7 @@
 
   <#PhysicalActivityTriplesMap>
   rml:logicalSource [
-    rml:source "https://open.spotify.com/artist";
+    rml:source "https://api.spotify.com/v1/me/following?type=artist";
     rml:referenceFormulation ql:JSONPath;
     rml:iterator "$.[*]"
   ];
