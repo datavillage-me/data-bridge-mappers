@@ -52,7 +52,7 @@
   rr:predicateObjectMap [
     rr:predicate schema:followee;
     rr:objectMap [
-      rr:parentTriplesMap <#Person>;
+      rr:parentTriplesMap <#FolloweeTriplesMap>;
           rr:joinCondition [
       			rr:child "$.id";
       			rr:parent "$.id";
@@ -60,7 +60,7 @@
     ]
   ].
 
-  <#PhysicalActivityTriplesMap>
+  <#FolloweeTriplesMap>
   rml:logicalSource [
     rml:source "https://api.spotify.com/v1/me/following?type=artist";
     rml:referenceFormulation ql:JSONPath;
@@ -76,6 +76,13 @@
     rr:predicate schema:name;
     rr:objectMap [
       rml:reference "$.name"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:provider;
+    rr:objectMap [
+      rr:constant "https://www.spotify.com"
     ]
   ];
   
