@@ -69,13 +69,20 @@
 
   rr:subjectMap [
     rr:template "https://open.spotify.com/artist/{id}";
-    rr:class schema:Person
+    rr:class schema:MusicGroup
   ];
 
   rr:predicateObjectMap [
     rr:predicate schema:name;
     rr:objectMap [
       rml:reference "$.name"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:genre;
+    rr:objectMap [
+      rml:reference "$.genres"
     ]
   ];
 
