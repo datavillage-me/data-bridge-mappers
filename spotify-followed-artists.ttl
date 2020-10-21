@@ -9,7 +9,7 @@
 
 <#PersonTriplesMap>
   rml:logicalSource [
-    rml:source "https://api.spotify.com/v1/me/following?type=artist";
+    rml:source "https://api.spotify.com/v1/me/following";
     rml:referenceFormulation ql:JSONPath;
     rml:iterator "$.[*]"
   ];
@@ -32,13 +32,13 @@
 
 <#ActionTriplesMap>
   rml:logicalSource [
-    rml:source "https://api.spotify.com/v1/me/following?type=artist";
+    rml:source "https://api.spotify.com/v1/me/following";
     rml:referenceFormulation ql:JSONPath;
     rml:iterator "$.[*]"
   ];
 
    rr:subjectMap [
-     rr:template "https://api.spotify.com/v1/me/following?type=artist&id={id}";
+     rr:template "https://api.spotify.com/v1/me/following/{id}";
      rr:class schema:Action;
    ];
 
@@ -62,7 +62,7 @@
 
   <#FolloweeTriplesMap>
   rml:logicalSource [
-    rml:source "https://api.spotify.com/v1/me/following?type=artist";
+    rml:source "https://api.spotify.com/v1/me/following";
     rml:referenceFormulation ql:JSONPath;
     rml:iterator "$.[*]"
   ];
