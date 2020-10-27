@@ -101,6 +101,13 @@
   ];
 
   rr:predicateObjectMap [
+    rr:predicate schema:name;
+    rr:objectMap [
+      rml:reference "$.name"
+    ]
+  ];
+
+  rr:predicateObjectMap [
     rr:predicate schema:keywords;
     rr:objectMap [
       rml:reference "$.category"
