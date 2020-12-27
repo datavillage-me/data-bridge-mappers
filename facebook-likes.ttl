@@ -4,7 +4,6 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix schema: <http://schema.org/>.
-@prefix paco: <http://www.semanticweb.org/hyk038/ontologies/2018/7/untitled-ontology-17#>.
 @base <http://sti2.at/> . #the base for the classes
 
 <#PersonTriplesMap>
