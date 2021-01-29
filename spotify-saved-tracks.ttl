@@ -1,0 +1,130 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix rdf: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix schema: <http://schema.org/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@base <http://sti2.at/> . #the base for the classes
+
+<#PersonTriplesMap>
+  rml:logicalSource [
+    rml:source "https://api.spotify.com/v1/me/tracks";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "https://api.datavillage.me/users/{userId}";
+    rr:class schema:Person
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:agent;
+    rr:objectMap [
+      rr:parentTriplesMap <#ActionTriplesMap>;
+          rr:joinCondition [
+            rr:child "$.userId";
+            rr:parent "$.userId";
+            ]
+    ]
+  ].
+
+<#ActionTriplesMap>
+  rml:logicalSource [
+    rml:source "https://api.spotify.com/v1/me/tracks";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.[*]"
+  ];
+
+   rr:subjectMap [
+     rr:template "https://api.spotify.com/v1/me/tracks/{track.album.id}";
+     rr:class schema:Action;
+   ];
+
+   rr:predicateObjectMap [
+    rr:predicate rdf:type;
+      rr:objectMap [
+      rr:constant "schema:BookmarkAction"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:object;
+    rr:objectMap [
+      rr:parentTriplesMap <#ObjectTriplesMap>;
+          rr:joinCondition [
+      			rr:child "$.track.album.id";
+      			rr:parent "$.track.album.id";
+      	    ]
+    ]
+  ].
+
+  <#ObjectTriplesMap>
+  rml:logicalSource [
+    rml:source "https://api.spotify.com/v1/me/tracks";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "https://api.spotify.com/v1/me/album/{track.album.id}";
+    rr:class schema:MusicAlbum
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:name;
+    rr:objectMap [
+      rml:reference "$.track.album.name"
+    ]
+  ];
+  rr:predicateObjectMap [
+    rr:predicate schema:provider;
+    rr:objectMap [
+      rr:constant "https://www.spotify.com"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:byArtist;
+    rr:objectMap [
+      rr:parentTriplesMap <#ArtistTriplesMap>;
+      rr:joinCondition [
+            rr:child "$.track.album.artists[*].id";
+            rr:parent "$.id";
+            ]
+    ]
+  ].
+
+<#ArtistTriplesMap>
+  rml:logicalSource [
+    rml:source "https://api.spotify.com/v1/me/tracks";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.items[*].tracks.album.artists[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "https://open.spotify.com/artist/{id}";
+    rr:class schema:MusicGroup
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:name;
+    rr:objectMap [
+      rml:reference "$.name"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:provider;
+    rr:objectMap [
+      rr:constant "https://www.spotify.com"
+    ]
+  ];
+  
+  rr:predicateObjectMap [
+    rr:predicate schema:additionalType;
+    rr:objectMap [
+      rr:constant "http://purl.org/ontology/mo/MusicArtist"
+    ]
+  ].
