@@ -105,8 +105,8 @@
     rr:objectMap [
       rr:parentTriplesMap <#ArtistTriplesMap>;
       rr:joinCondition [
-            rr:child "$.id";
-            rr:parent "$.album.artists[*].id";
+            rr:child "$.album.artists[*].id";
+            rr:parent "$.id";
             ]
     ]
   ].
