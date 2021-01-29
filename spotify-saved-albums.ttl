@@ -89,7 +89,7 @@
   rr:predicateObjectMap [
     rr:predicate schema:blabla;
     rr:objectMap [
-      rml:reference "$.album.artists[:1].id"
+      rml:reference "$.album.artists[*].id"
     ]
   ];
 
