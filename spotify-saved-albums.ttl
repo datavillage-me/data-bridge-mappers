@@ -87,6 +87,13 @@
   ];
 
   rr:predicateObjectMap [
+    rr:predicate schema:blabla;
+    rr:objectMap [
+      rml:reference "$.album.artists[:1].id"
+    ]
+  ];
+
+  rr:predicateObjectMap [
     rr:predicate schema:provider;
     rr:objectMap [
       rr:constant "https://www.spotify.com"
