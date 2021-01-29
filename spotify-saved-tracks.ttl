@@ -69,7 +69,7 @@
 
   rr:subjectMap [
     rr:template "https://api.spotify.com/v1/me/album/{track.album.id}";
-    rr:class schema:MusicAlbum
+    rr:class schema:MusicRecording
   ];
 
   rr:predicateObjectMap [
