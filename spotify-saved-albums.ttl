@@ -93,29 +93,16 @@
     ]
   ];
 
-  rr:predicateObjectMap [
-    rr:predicate schema:byArtist;
-    rr:objectMap [
-      rr:parentTriplesMap <#ArtistTriplesMap>;
-          rr:joinCondition [
-      			rr:child "$.album.0.id";
-      			rr:parent "$.album.0.id";
-      	    ]
-    ]
-  ].
-
-<#ArtistTriplesMap>
   rml:logicalSource [
     rml:source "https://api.spotify.com/v1/me/albums";
     rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.[*].album.[*]"
+    rml:iterator "$.artists.[*]"
   ];
 
   rr:subjectMap [
     rr:template "https://open.spotify.com/artist/{id}";
     rr:class schema:MusicGroup
   ];
-
   rr:predicateObjectMap [
     rr:predicate schema:name;
     rr:objectMap [
