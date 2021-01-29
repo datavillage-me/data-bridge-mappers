@@ -99,7 +99,7 @@
       rr:parentTriplesMap <#ArtistTriplesMap>;
       rr:joinCondition [
             rr:child "$.id";
-            rr:parent "$.album.artists[:1].id";
+            rr:parent "$.album.artists[*].id";
             ]
     ]
   ].
