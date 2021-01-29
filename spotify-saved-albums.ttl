@@ -93,12 +93,6 @@
     ]
   ];
 
-  rml:logicalSource [
-    rml:source "https://api.spotify.com/v1/me/albums";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.artists.[*]"
-  ];
-
   rr:predicateObjectMap [
     rr:predicate schema:byArtist;
     rr:objectMap [
