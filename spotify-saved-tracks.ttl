@@ -100,7 +100,7 @@
   rml:logicalSource [
     rml:source "https://api.spotify.com/v1/me/tracks";
     rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.items[*].tracks.album.artists[*]"
+    rml:iterator "$.items[*].track.album.artists[*]"
   ];
 
   rr:subjectMap [
