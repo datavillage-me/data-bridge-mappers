@@ -78,6 +78,14 @@
       rml:reference "$.track.album.name"
     ]
   ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:startTime;
+      rr:objectMap [
+      rml:reference "$.added_at"
+    ]
+  ];
+  
   rr:predicateObjectMap [
     rr:predicate schema:provider;
     rr:objectMap [

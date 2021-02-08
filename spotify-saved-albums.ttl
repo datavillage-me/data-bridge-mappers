@@ -80,6 +80,13 @@
   ];
 
   rr:predicateObjectMap [
+    rr:predicate schema:startTime;
+      rr:objectMap [
+      rml:reference "$.added_at"
+    ]
+  ];
+
+  rr:predicateObjectMap [
     rr:predicate schema:genre;
     rr:objectMap [
       rml:reference "$.genres"
