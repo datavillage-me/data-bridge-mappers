@@ -50,6 +50,13 @@
     ];
 
   rr:predicateObjectMap [
+    rr:predicate schema:startTime;
+      rr:objectMap [
+      rml:reference "$.added_at"
+    ]
+  ];
+
+  rr:predicateObjectMap [
     rr:predicate schema:object;
     rr:objectMap [
       rr:parentTriplesMap <#ObjectTriplesMap>;
@@ -76,13 +83,6 @@
     rr:predicate schema:name;
     rr:objectMap [
       rml:reference "$.track.album.name"
-    ]
-  ];
-
-  rr:predicateObjectMap [
-    rr:predicate schema:startTime;
-      rr:objectMap [
-      rml:reference "$.added_at"
     ]
   ];
   

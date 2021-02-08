@@ -46,8 +46,15 @@
     rr:predicate rdf:type;
       rr:objectMap [
       rr:constant "schema:BookmarkAction"
-      ]
-    ];
+    ]
+  ];
+  
+  rr:predicateObjectMap [
+    rr:predicate schema:startTime;
+      rr:objectMap [
+      rml:reference "$.added_at"
+    ]
+  ];
 
   rr:predicateObjectMap [
     rr:predicate schema:object;
@@ -76,13 +83,6 @@
     rr:predicate schema:name;
     rr:objectMap [
       rml:reference "$.album.name"
-    ]
-  ];
-
-  rr:predicateObjectMap [
-    rr:predicate schema:startTime;
-      rr:objectMap [
-      rml:reference "$.added_at"
     ]
   ];
 
