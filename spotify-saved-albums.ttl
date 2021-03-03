@@ -4,11 +4,12 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix schema: <http://schema.org/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
 @base <http://sti2.at/> . #the base for the classes
 
 <#PersonTriplesMap>
   rml:logicalSource [
-    rml:source "https://graph.facebook.com/v3.3/me/likes";
+    rml:source "https://api.spotify.com/v1/me/albums";
     rml:referenceFormulation ql:JSONPath;
     rml:iterator "$.[*]"
   ];
@@ -31,72 +32,95 @@
 
 <#ActionTriplesMap>
   rml:logicalSource [
-    rml:source "https://graph.facebook.com/v3.3/me/likes";
+    rml:source "https://api.spotify.com/v1/me/albums";
     rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.data[*]"
+    rml:iterator "$.[*]"
   ];
 
    rr:subjectMap [
-     rr:template "https://graph.facebook.com/v3.3/me/likes?target_id={id}";
+     rr:template "https://api.spotify.com/v1/me/albums/{album.id}";
      rr:class schema:Action;
    ];
 
    rr:predicateObjectMap [
     rr:predicate rdf:type;
       rr:objectMap [
-      rr:constant "schema:LikeAction"
-      ]
-    ];
-
-    rr:predicateObjectMap [
+      rr:constant "schema:BookmarkAction"
+    ]
+  ];
+  
+  rr:predicateObjectMap [
     rr:predicate schema:startTime;
       rr:objectMap [
-      rml:reference "$.created_time"
-      ]
-    ];
+      rml:reference "$.added_at"
+    ]
+  ];
 
   rr:predicateObjectMap [
     rr:predicate schema:object;
     rr:objectMap [
       rr:parentTriplesMap <#ObjectTriplesMap>;
           rr:joinCondition [
-      			rr:child "$.id";
-      			rr:parent "$.id";
+      			rr:child "$.album.id";
+      			rr:parent "$.album.id";
       	    ]
     ]
   ].
 
   <#ObjectTriplesMap>
   rml:logicalSource [
-    rml:source "https://graph.facebook.com/v3.3/me/likes";
+    rml:source "https://api.spotify.com/v1/me/albums";
     rml:referenceFormulation ql:JSONPath;
     rml:iterator "$.[*]"
   ];
 
   rr:subjectMap [
-    rr:template "https://graph.facebook.com/v3.3/{id}";
-    rr:class schema:CreativeWork
+    rr:template "https://api.spotify.com/v1/me/album/{album.id}";
+    rr:class schema:MusicAlbum
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:name;
+    rr:objectMap [
+      rml:reference "$.album.name"
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:genre;
+    rr:objectMap [
+      rml:reference "$.genres"
+    ]
   ];
 
   rr:predicateObjectMap [
     rr:predicate schema:provider;
     rr:objectMap [
-      rr:constant "https://www.facebook.com"
+      rr:constant "https://www.spotify.com"
     ]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:about;
+    rr:predicate schema:byArtist;
     rr:objectMap [
-      rml:reference "$.about"
+      rr:parentTriplesMap <#ArtistTriplesMap>;
+      rr:joinCondition [
+            rr:child "$.album.artists[*].id";
+            rr:parent "$.id";
+            ]
     ]
+  ].
+
+<#ArtistTriplesMap>
+  rml:logicalSource [
+    rml:source "https://api.spotify.com/v1/me/albums";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.items[*].album.artists[*]"
   ];
 
-  rr:predicateObjectMap [
-    rr:predicate schema:description;
-    rr:objectMap [
-      rml:reference "$.description"
-    ]
+  rr:subjectMap [
+    rr:template "https://open.spotify.com/artist/{id}";
+    rr:class schema:MusicGroup
   ];
 
   rr:predicateObjectMap [
@@ -107,8 +131,15 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate schema:keywords;
+    rr:predicate schema:provider;
     rr:objectMap [
-      rml:reference "$.category"
+      rr:constant "https://www.spotify.com"
+    ]
+  ];
+  
+  rr:predicateObjectMap [
+    rr:predicate schema:additionalType;
+    rr:objectMap [
+      rr:constant "http://purl.org/ontology/mo/MusicArtist"
     ]
   ].
