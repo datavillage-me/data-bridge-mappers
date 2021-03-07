@@ -42,9 +42,9 @@
    ];
 
    rr:predicateObjectMap [
-    rr:predicate rdf:type;
+    rr:predicate schema:additionalType;
       rr:objectMap [
-      rr:constant "schema:LikeAction"
+      rr:constant "https://schema.org/LikeAction"
       ]
     ];
 

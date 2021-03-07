@@ -43,9 +43,9 @@
    ];
 
    rr:predicateObjectMap [
-    rr:predicate rdf:type;
+    rr:predicate schema:additionalType;
       rr:objectMap [
-      rr:constant "schema:TravelAction"
+      rr:constant "https://schema.org/TravelAction"
       ]
     ];
 
