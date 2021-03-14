@@ -75,7 +75,7 @@
   ];
 
   rr:subjectMap [
-    rr:template "https://api.spotify.com/v1/me/album/{album.id}";
+    rr:template "https://open.spotify.com/album/{album.id}";
     rr:class schema:MusicAlbum
   ];
 
