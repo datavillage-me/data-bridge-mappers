@@ -44,7 +44,7 @@
    rr:predicateObjectMap [
     rr:predicate schema:additionalType;
       rr:objectMap [
-      rr:constant "https://schema.org/LikeAction"
+      rr:constant "http://schema.org/LikeAction"
       ]
     ];
 
